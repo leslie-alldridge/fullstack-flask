@@ -17,7 +17,7 @@ class FlaskTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     # Ensure logout page redirects to sign in page
-    def test_logout(self):
+    def test_logout_redirect(self):
         tester = app.test_client(self)
         response = tester.get('/logout', content_type='html/text')
         self.assertEqual(response.status_code, 302)
