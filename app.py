@@ -1,15 +1,18 @@
-from models import *
 from flask import Flask, render_template, redirect, url_for, request, session, flash, g
-import os
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 # import sqlite3
 
 app = Flask(__name__)
 
+# config
+import os
 app.config.from_object(os.environ['APP_SETTINGS'])
 
 db = SQLAlchemy(app)
+
+# import db schema
+from models import *
 
 
 def login_required(f):
