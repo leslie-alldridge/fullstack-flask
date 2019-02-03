@@ -10,6 +10,24 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.get('/login', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
+    # Ensure welcome page loads
+    def test_welcome(self):
+        tester = app.test_client(self)
+        response = tester.get('/welcome', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
+    # Ensure logout page redirects to sign in page
+    def test_logout(self):
+        tester = app.test_client(self)
+        response = tester.get('/logout', content_type='html/text')
+        self.assertEqual(response.status_code, 302)
+
+    # Ensure root page redirects
+    def test_root(self):
+        tester = app.test_client(self)
+        response = tester.get('/', content_type='html/text')
+        self.assertEqual(response.status_code, 302)
+
     # Ensure that the login page loads correctly
     def test_login_page_loads(self):
         tester = app.test_client(self)
