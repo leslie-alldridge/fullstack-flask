@@ -1,5 +1,5 @@
-from app import db
-from models import BlogPost
+from project import db
+from project.models import BlogPost
 
 # create the database tables based on the schema defined in models.py
 db.create_all()
