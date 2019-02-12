@@ -4,9 +4,10 @@ from flask import Flask, render_template, redirect, \
     url_for, request, session, flash
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_bcrypt import Bcrypt
 # create the application object
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 # config
 import os
@@ -17,7 +18,10 @@ db = SQLAlchemy(app)
 
 # import db schema
 from models import *
+from project.users.views import users_blueprint
 
+# register our blueprints
+app.register_blueprint(users_blueprint)
 
 # login required decorator
 def login_required(f):
