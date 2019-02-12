@@ -1,17 +1,16 @@
-
 from project import db
 from project.models import BlogPost
 from flask import flash, redirect, session, url_for, render_template, Blueprint
 from functools import wraps
 
-##config
+#config
 
 home_blueprint = Blueprint(
     'home', __name__,
     template_folder='templates'
 )
 
-##helpers
+#helpers
 
 def login_required(test):
     @wraps(test)
@@ -24,7 +23,7 @@ def login_required(test):
     return wrap
 
 
-##routes
+#routes
 
 # use decorators to link the function to a url
 @home_blueprint.route('/')

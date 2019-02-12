@@ -1,9 +1,10 @@
-# import the Flask class from the flask module
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 import os
-# create the application object
+
+#config
+
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.config.from_object(os.environ['APP_SETTINGS'])
