@@ -1,6 +1,7 @@
 from flask import flash, redirect, render_template, request, \
     session, url_for, Blueprint
 from functools import wraps
+from flask_login import login_user, login_required, logout_user
 from form import LoginForm
 from project.models import User, bcrypt
 #config
@@ -25,7 +26,6 @@ def login_required(test):
 
 #routes
 
-# route for handling the login page logic
 @users_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -36,7 +36,7 @@ def login():
             if user is not None and bcrypt.check_password_hash(
                 user.password, request.form['password']
             ):
-                session['logged_in'] = True
+                login_user(user)
                 flash('You were logged in. Go Crazy.')
                 return redirect(url_for('home.home'))
 
@@ -44,9 +44,10 @@ def login():
                 error = 'Invalid username or password.'
     return render_template('login.html', form=form, error=error)
 
+
 @users_blueprint.route('/logout')
 @login_required
 def logout():
-    session.pop('logged_in', None)
+    logout_user()
     flash('You were logged out.')
     return redirect(url_for('home.welcome'))
