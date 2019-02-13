@@ -20,7 +20,7 @@ from project.home.views import home_blueprint
 app.register_blueprint(users_blueprint)
 app.register_blueprint(home_blueprint)
 
-from models import User
+from .models import User
 
 login_manager.login_view = "users.login"
 
