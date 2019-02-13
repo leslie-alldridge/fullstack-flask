@@ -1,27 +1,16 @@
 from flask import flash, redirect, render_template, request, \
-    session, url_for, Blueprint
-from functools import wraps
+    url_for, Blueprint
 from flask_login import login_user, login_required, logout_user
-from form import LoginForm
+
+from .form import LoginForm
 from project.models import User, bcrypt
+
 #config
 
 users_blueprint = Blueprint(
     'users', __name__,
     template_folder='templates'
 )
-
-#helpers
-
-def login_required(test):
-    @wraps(test)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return test(*args, **kwargs)
-        else:
-            flash('Please log in to access this page.')
-            return redirect(url_for('users.login'))
-    return wrap
 
 
 #routes
