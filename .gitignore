@@ -2,3 +2,5 @@ venv
 sample.db
 *.pyc
 env
+coverage
+.DS_Store
