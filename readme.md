@@ -12,7 +12,8 @@ I found that flask generally runs faster as it comes with less baggage, but cert
 Additional styling and functionality would be good to add but in the meantime I think my focus will remain on React + Django.
 
 ### URL to Heroku:
-Coming soon - upgrade to python 3 in the works
+https://py-test-leslie.herokuapp.com/login?next=%2F
+Deployed using Python 2 buildpack on Heroku, will look to upgrade to Python 3 in the future.
 
 ### Overall:
 It was fun to learn something new and I will add this project to my featured repos to demonstrate my interest and current ability in Python.
