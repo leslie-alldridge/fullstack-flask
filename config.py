@@ -4,7 +4,8 @@ import os
 
 class BaseConfig(object):
     DEBUG = False
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = 'secret'
+    # os.environ['SECRET_KEY']
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 class TestConfig(BaseConfig):
